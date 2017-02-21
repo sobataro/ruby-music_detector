@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{music detector}
   spec.description   = %q{detects music on wave (.wav) file}
-  spec.homepage      = "https://github.com/sobataro/ruby-music-detector"
+  spec.homepage      = "https://github.com/sobataro/ruby-music_detector"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
