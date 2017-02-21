@@ -2,6 +2,7 @@ require 'music_detector'
 
 if ARGV.count != 2
   puts("usage: ruby test.rb [dir of negative examples] [dir of positive examples]")
+  exit
 end
 
 negative_example_dir = ARGV[0]

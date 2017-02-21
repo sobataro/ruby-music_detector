@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'wavefile', '~> 0.8.1'
   spec.add_runtime_dependency 'ruby-fftw3', '~> 1.0', '>= 1.0.2'
+  spec.add_runtime_dependency 'narray', '~> 0.6.1.2'
 
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"
