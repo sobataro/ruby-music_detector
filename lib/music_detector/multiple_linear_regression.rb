@@ -63,6 +63,7 @@ module MusicDetector
     end
 
     # @param [NArray] fvs array of input feature vector(s)
+    # @return [Array<Boolean>] estimated result; if the n-th element is true, the n-th feature vector might contain music
     def estimate(fvs)
       raise ArgumentError('the form of the input is differ from trained model') if @b.total - 1 != fvs.shape[0]
 
@@ -78,7 +79,10 @@ module MusicDetector
           x[1..(fvs.shape[0]), i] = fvs[true, i].flatten
         end
       end
-      x * @b
+      y = x * @b
+      y[y < 0] = false
+      y[y >= 0] = true
+      y.to_a
     end
 
     def export_to(file_path, config:)
