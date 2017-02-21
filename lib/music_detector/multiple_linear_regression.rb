@@ -62,14 +62,21 @@ module MusicDetector
       model
     end
 
-    # @param [NArray]
-    def estimate(input)
-      raise RuntimeError('the form of the input is differ from trained model') if @b.total - 1 != input.shape[0]
+    # @param [NArray] fvs array of input feature vector(s)
+    def estimate(fvs)
+      raise ArgumentError('the form of the input is differ from trained model') if @b.total - 1 != fvs.shape[0]
 
-      x = NMatrix.float(input.shape[0] + 1, input.shape[1])
-      (input.shape[1]).times do |i|
-        x[0, i] = 1.0
-        x[1..(input.shape[0]), i] = input[true, i].flatten
+      x = nil
+      if fvs.shape.length == 1
+        x = NMatrix.float(fvs.shape[0] + 1, 1)
+        x[0, 0] = 1.0
+        x[1..(fvs.shape[0]), 0] = fvs
+      else
+        x = NMatrix.float(fvs.shape[0] + 1, fvs.shape[1])
+        (fvs.shape[1]).times do |i|
+          x[0, i] = 1.0
+          x[1..(fvs.shape[0]), i] = fvs[true, i].flatten
+        end
       end
       x * @b
     end
