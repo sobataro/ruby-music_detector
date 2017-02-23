@@ -6,7 +6,7 @@ module MusicDetector
     # @param [Range]   temperament_range  range of the equal temperament used to extract feature vector
     # @param [Float]   in_tune_cents      maximum frequency difference between an in-tune note and the equal temperament
     # @param [Float]   out_of_tune_ratio  minimum frequency difference between an out-of-tune note and the equal temperament
-    def initialize(a: 440, temperament_range: -24..48, in_tune_cents: 10, out_of_tune_cents: 30)
+    def initialize(a: 440, temperament_range: -12..36, in_tune_cents: 10, out_of_tune_cents: 30)
       @a                 = a
       @temperament_range = temperament_range
       @in_tune_cents     = in_tune_cents
