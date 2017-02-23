@@ -80,9 +80,11 @@ module MusicDetector
         end
       end
       y = x * @b
-      y[y < 0] = false
-      y[y >= 0] = true
-      y.to_a
+#      p y
+      results = NArray.object(y.total)
+      results[y >= 0] = true
+      results[y < 0] = false
+      results.to_a
     end
 
     def export_to(file_path, config:)
